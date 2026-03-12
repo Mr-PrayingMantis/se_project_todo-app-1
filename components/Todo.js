@@ -38,11 +38,11 @@ class Todo {
     todoNameEl.textContent = this._data.name;
     this._generateCheckBoxEl();
     this._setEventListeners();
-    this._manifestedDueDates(); 
+    this._renderDueDate(); 
     return this._todoElement;
 }
 
- _manifestedDueDates() {
+ _renderDueDate() {
     const dueDate = new Date(this._data.date);
     if (!isNaN(dueDate)) {
      this._todoDateEl.textContent = `Due: ${dueDate.toLocaleString("en-US", {

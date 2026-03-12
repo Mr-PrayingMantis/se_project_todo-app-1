@@ -5,7 +5,7 @@ class TodoCounter {
     this._element = document.querySelector(selector);
     this._completed = 0; // number of completed todos
     this._total = todos.length;
-    this._completed = todos.filter((todos) => todos.completed).length;
+    this._completed = todos.filter((todo) => todo.completed);
     this._updateText();
   }
   
