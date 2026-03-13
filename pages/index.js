@@ -10,15 +10,15 @@ import TodoCounter from "../components/TodoCounter.js";
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-//const todoTemplate = document.querySelector("#todo-template");
+
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
-const addTodoPopup = new PopupWithForm({
-  popupSelector: "#add-todo-popup", 
-  handleFormSubmit: (formValues) => { const { name, date } = formValues;
+const handleFormSubmit = (data) => {
+    const name = data.name;
+    const dateInput = data.date;
 
-const dueDate = new Date(date);
+const dueDate = new Date(dateInput);
 dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset());
 
   const id = uuidv4();
@@ -30,7 +30,11 @@ dueDate.setMinutes(dueDate.getMinutes() + dueDate.getTimezoneOffset());
   todoCounter.updateTotal(true) 
   newTodoValidator.resetValidation()
   addTodoPopup.close();    
-  },
+  };
+  
+const addTodoPopup = new PopupWithForm({
+    popupSelector: "#add-todo-popup",
+    handleFormSubmit,
 });
 
 const section = new Section({

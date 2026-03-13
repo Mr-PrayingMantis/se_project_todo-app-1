@@ -1,7 +1,7 @@
 class Todo {
   constructor(data, selector, handleCheck, handleDelete) {
     this._data = data;
-    this._templatElement = document.querySelector(selector);
+    this._templateElement= document.querySelector(selector);
     this._handleCheck = handleCheck;
     this._handleDelete = handleDelete;
   }
@@ -9,6 +9,7 @@ class Todo {
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
   this._todoElement.remove();
+  this._element = null;
   this._handleDelete(this._data.completed);
 });
 
@@ -28,7 +29,7 @@ class Todo {
   }
 
   getView() {
-    this._todoElement = this._templatElement.content
+    this._todoElement = this._templateElement.content
       .querySelector(".todo")
       .cloneNode(true);
 
